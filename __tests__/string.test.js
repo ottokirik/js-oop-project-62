@@ -1,9 +1,28 @@
-import { describe, test } from '@jest/globals';
+import { describe, test, expect } from '@jest/globals';
+import Validator from '../src/validator';
 
 describe('String validators', () => {
-  test('minLength', () => {});
+  test('minLength', () => {
+    const validator = new Validator();
+    const scheme = validator.minLength(5);
 
-  test('required', () => {});
+    expect(scheme.isValid('Min')).toBe(false);
+    expect(scheme.isValid('Min length 5')).toBe(true);
+  });
 
-  test('contains', () => {});
+  test('required', () => {
+    const validator = new Validator();
+    const scheme = validator.required();
+
+    expect(scheme.isValid('')).toBe(false);
+    expect(scheme.isValid('Min length 5')).toBe(true);
+  });
+
+  test('contains', () => {
+    const validator = new Validator();
+    const scheme = validator.contains('Min');
+
+    expect(scheme.isValid('')).toBe(false);
+    expect(scheme.isValid('Min length 5')).toBe(true);
+  });
 });
