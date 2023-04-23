@@ -24,5 +24,8 @@ describe('String validators', () => {
 
     expect(scheme.isValid('')).toBe(false);
     expect(scheme.isValid('Min length 5')).toBe(true);
+
+    scheme.contains('MAX');
+    expect(scheme.isValid('Min length 5')).toBe(false);
   });
 });
