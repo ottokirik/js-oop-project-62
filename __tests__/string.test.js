@@ -4,28 +4,26 @@ import Validator from '../src/validator';
 describe('String validators', () => {
   test('minLength', () => {
     const validator = new Validator();
-    const scheme = validator.minLength(5);
+    const scheme = validator.string();
 
-    expect(scheme.isValid('Min')).toBe(false);
-    expect(scheme.isValid('Min length 5')).toBe(true);
+    expect(scheme.minLength(5).isValid('Min')).toBe(false);
+    expect(scheme.minLength(5).isValid('Min length 5')).toBe(true);
   });
 
   test('required', () => {
     const validator = new Validator();
-    const scheme = validator.required();
+    const scheme = validator.string();
 
-    expect(scheme.isValid('')).toBe(false);
-    expect(scheme.isValid('Min length 5')).toBe(true);
+    expect(scheme.required().isValid('')).toBe(false);
+    expect(scheme.required().isValid('Min length 5')).toBe(true);
   });
 
   test('contains', () => {
     const validator = new Validator();
-    const scheme = validator.contains('Min');
+    const scheme = validator.string();
 
-    expect(scheme.isValid('')).toBe(false);
-    expect(scheme.isValid('Min length 5')).toBe(true);
-
-    scheme.contains('MAX');
-    expect(scheme.isValid('Min length 5')).toBe(false);
+    expect(scheme.contains('Min').isValid('')).toBe(false);
+    expect(scheme.contains('Min').isValid('Min length 5')).toBe(true);
+    expect(scheme.contains('MAX').isValid('Min length 5')).toBe(false);
   });
 });
