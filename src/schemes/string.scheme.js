@@ -28,7 +28,7 @@ export default class StringScheme {
 
     const isRequired = required ? required(value) : true;
     const isContains = contains ? contains(value) : true;
-    const isString = stringValidator ? stringValidator(value) : true;
+    const isString = stringValidator(value);
     const isMinLength = minLength ? minLength(value) : true;
 
     return isString && isContains && isMinLength && isRequired;
