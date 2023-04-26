@@ -1,17 +1,24 @@
 import NumberScheme from './schemes/number.scheme';
 import StringScheme from './schemes/string.scheme';
+import ArrayScheme from './schemes/array.scheme';
 
 class Validator {
-  schemes = {};
+  schemes = {
+    string: new StringScheme(),
+    number: new NumberScheme(),
+    array: new ArrayScheme(),
+  };
 
   string() {
-    this.schemes.string = new StringScheme();
     return this.schemes.string;
   }
 
   number() {
-    this.schemes.number = new NumberScheme();
     return this.schemes.number;
+  }
+
+  array() {
+    return this.schemes.array;
   }
 }
 
