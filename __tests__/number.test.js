@@ -23,7 +23,7 @@ describe('Number validators', () => {
     const validator = new Validator();
     const scheme = validator.number().positive();
 
-    expect(scheme.isValid(0)).toBe(true);
+    expect(scheme.isValid(0)).toBe(false);
     expect(scheme.isValid(-5)).toBe(false);
     expect(scheme.isValid(5)).toBe(true);
   });
@@ -41,7 +41,7 @@ describe('Number validators', () => {
     const validator = new Validator();
     const scheme = validator.number().positive().required();
 
-    expect(scheme.isValid(0)).toBe(true);
+    expect(scheme.isValid(0)).toBe(false);
     expect(scheme.isValid(-5)).toBe(false);
     expect(scheme.isValid(null)).toBe(false);
   });
