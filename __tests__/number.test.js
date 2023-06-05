@@ -36,4 +36,13 @@ describe('Number validators', () => {
     expect(scheme.range(0, 4).isValid(-5)).toBe(false);
     expect(scheme.range(3, 5).isValid(5)).toBe(true);
   });
+
+  test('positive required', () => {
+    const validator = new Validator();
+    const scheme = validator.number().positive().required();
+
+    expect(scheme.isValid(0)).toBe(true);
+    expect(scheme.isValid(-5)).toBe(false);
+    expect(scheme.isValid(null)).toBe(false);
+  });
 });

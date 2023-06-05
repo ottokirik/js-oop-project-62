@@ -24,7 +24,7 @@ export default class NumberScheme extends CoreScheme {
     const isPositive = positive ? positive(value) : true;
     const isInRange = range ? range(value) : true;
 
-    console.log('=======================', this.validators);
+    console.log('value', value, isNumber && isPositive && isInRange && super.isValid(value) && isRequired);
 
     return isNumber && isPositive && isInRange && super.isValid(value) && isRequired;
   }
