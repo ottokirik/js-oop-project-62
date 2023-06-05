@@ -1,9 +1,10 @@
 import requiredValidator from '../validators/required.validator';
 
 export default class CoreScheme {
-  validators = {};
-
-  customValidators = {};
+  constructor() {
+    this.validators = {};
+    this.customValidators = {};
+  }
 
   addValidator(name, fn) {
     this.validators[name] = (condition) => (value) => fn(value, condition);
