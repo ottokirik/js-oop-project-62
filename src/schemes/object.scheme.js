@@ -1,5 +1,7 @@
 export default class ObjectScheme {
-  validators = {};
+  constructor() {
+    this.validators = {};
+  }
 
   shape(options = {}) {
     this.validators = options;
