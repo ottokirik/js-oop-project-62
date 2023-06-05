@@ -1,16 +1,9 @@
 import numberValidator from '../validators/number.validator';
 import positiveValidator from '../validators/positive.validator';
 import rangeValidator from '../validators/range.validator';
-import requiredValidator from '../validators/required.validator';
+import CoreScheme from './core.scheme';
 
-export default class NumberScheme {
-  validators = {};
-
-  required() {
-    this.validators.required = requiredValidator;
-    return this;
-  }
-
+export default class NumberScheme extends CoreScheme {
   positive() {
     this.validators.positive = positiveValidator;
     return this;
@@ -31,6 +24,6 @@ export default class NumberScheme {
     const isPositive = positive ? positive(value) : true;
     const isInRange = range ? range(value) : true;
 
-    return isNumber && isPositive && isInRange && isRequired;
+    return isNumber && isPositive && isInRange && super.isValid(value) && isRequired;
   }
 }

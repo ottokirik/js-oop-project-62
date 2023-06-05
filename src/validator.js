@@ -26,6 +26,10 @@ class Validator {
   object() {
     return this.schemes.object;
   }
+
+  addValidator(type, name, fn) {
+    this.schemes[type].addValidator(name, fn);
+  }
 }
 
 export default Validator;

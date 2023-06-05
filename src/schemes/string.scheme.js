@@ -1,16 +1,10 @@
 import containsValidator from '../validators/contains.validator';
 import minLengthValidator from '../validators/min-length.validator';
-import requiredValidator from '../validators/required.validator';
+
 import stringValidator from '../validators/string.validator';
+import CoreScheme from './core.scheme';
 
-export default class StringScheme {
-  validators = {};
-
-  required() {
-    this.validators.required = requiredValidator;
-    return this;
-  }
-
+export default class StringScheme extends CoreScheme {
   contains(checked) {
     this.validators.contains = containsValidator(checked);
     return this;
@@ -31,6 +25,6 @@ export default class StringScheme {
     const isString = stringValidator(value);
     const isMinLength = minLength ? minLength(value) : true;
 
-    return isString && isContains && isMinLength && isRequired;
+    return isString && isContains && isMinLength && super.isValid(value) && isRequired;
   }
 }
