@@ -1,17 +1,10 @@
 import sizeofValidator from '../validators/sizeof.validator';
 import arrayValidator from '../validators/array.validator';
-import requiredValidator from '../validators/required.validator';
+import CoreScheme from './core.scheme';
 
-export default class ArrayScheme {
-  validators = {};
-
+export default class ArrayScheme extends CoreScheme {
   sizeof(length) {
     this.validators.sizeof = sizeofValidator(length);
-    return this;
-  }
-
-  required() {
-    this.validators.required = requiredValidator;
     return this;
   }
 
