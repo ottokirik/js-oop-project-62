@@ -21,11 +21,11 @@ describe('Number validators', () => {
 
   test('positive', () => {
     const validator = new Validator();
-    const scheme = validator.number();
+    const scheme = validator.number().positive();
 
-    expect(scheme.positive().isValid(0)).toBe(true);
-    expect(scheme.positive().isValid(-5)).toBe(false);
-    expect(scheme.positive().isValid(5)).toBe(true);
+    expect(scheme.isValid(0)).toBe(true);
+    expect(scheme.isValid(-5)).toBe(false);
+    expect(scheme.isValid(5)).toBe(true);
   });
 
   test('range', () => {
