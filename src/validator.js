@@ -4,12 +4,14 @@ import ArrayScheme from './schemes/array.scheme';
 import ObjectScheme from './schemes/object.scheme';
 
 class Validator {
-  schemes = {
-    string: new StringScheme(),
-    number: new NumberScheme(),
-    array: new ArrayScheme(),
-    object: new ObjectScheme(),
-  };
+  constructor() {
+    this.schemes = {
+      string: new StringScheme(),
+      number: new NumberScheme(),
+      array: new ArrayScheme(),
+      object: new ObjectScheme(),
+    };
+  }
 
   string() {
     return this.schemes.string;
