@@ -25,8 +25,6 @@ export default class CoreScheme {
 
     const customValidatorsKeys = Object.keys(customValidators);
 
-    const isCustomValidate = customValidatorsKeys.length === 0 ? true : customValidatorsKeys.every((key) => customValidators[key](value));
-
-    return isCustomValidate;
+    return customValidatorsKeys.length === 0 ? true : customValidatorsKeys.every((key) => customValidators[key](value));
   }
 }
